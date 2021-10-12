@@ -17,6 +17,11 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   end
 end
 
+Then(/^the director of "([^"]*)" should be "([^"]*)"$/) do |arg1, arg2|
+  @movie = Movie.find_by title: arg1
+  expect(@movie.director == arg1)
+end
+
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
   Movie.all.each do |movie|
